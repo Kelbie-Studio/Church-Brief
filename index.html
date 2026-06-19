@@ -9,480 +9,155 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --black: #080808;
-      --black2: #111111;
-      --gold: #c9a84c;
-      --gold-light: #e2c47a;
-      --gold-dim: rgba(201,168,76,0.12);
-      --gold-border: rgba(201,168,76,0.25);
-      --white: #f5f3ee;
-      --gray: #888880;
-      --gray2: #555550;
+      --black: #080808; --black2: #111111;
+      --gold: #c9a84c; --gold-light: #e2c47a;
+      --gold-dim: rgba(201,168,76,0.12); --gold-border: rgba(201,168,76,0.25);
+      --white: #f5f3ee; --gray: #888880; --gray2: #555550;
+      --red: rgba(220,60,60,0.7);
     }
-
     html { scroll-behavior: smooth; }
+    body { background: var(--black); color: var(--white); font-family: 'Inter', sans-serif; font-weight: 300; line-height: 1.7; min-height: 100vh; }
 
-    body {
-      background: var(--black);
-      color: var(--white);
-      font-family: 'Inter', sans-serif;
-      font-weight: 300;
-      line-height: 1.7;
-      min-height: 100vh;
-    }
-
-    /* HEADER */
-    header {
-      padding: 40px 60px 0;
-      border-bottom: 1px solid rgba(201,168,76,0.1);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding-bottom: 28px;
-    }
-
-    .logo {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 22px;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      color: var(--white);
-      text-decoration: none;
-    }
+    header { padding: 28px 60px; border-bottom: 1px solid rgba(201,168,76,0.1); display: flex; align-items: center; justify-content: space-between; }
+    .logo { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; letter-spacing: 0.08em; color: var(--white); text-decoration: none; }
     .logo span { color: var(--gold); }
+    .header-tag { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gray); border: 1px solid rgba(201,168,76,0.15); padding: 6px 14px; }
 
-    .header-tag {
-      font-size: 10px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--gray);
-      border: 1px solid rgba(201,168,76,0.15);
-      padding: 6px 14px;
-    }
-
-    /* HERO */
-    .form-hero {
-      padding: 64px 60px 48px;
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-      background: var(--black2);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .form-hero::before {
-      content: '';
-      position: absolute;
-      top: -150px; right: -150px;
-      width: 500px; height: 500px;
-      background: radial-gradient(circle, rgba(201,168,76,0.05) 0%, transparent 65%);
-      pointer-events: none;
-    }
-
-    .form-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 10px;
-      letter-spacing: 0.24em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 20px;
-    }
-    .form-eyebrow::before {
-      content: '';
-      display: block;
-      width: 24px; height: 1px;
-      background: var(--gold);
-    }
-
-    .form-hero h1 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(36px, 5vw, 60px);
-      font-weight: 300;
-      line-height: 1.1;
-      margin-bottom: 16px;
-    }
+    .form-hero { padding: 64px 60px 48px; border-bottom: 1px solid rgba(255,255,255,0.05); background: var(--black2); position: relative; overflow: hidden; }
+    .form-hero::before { content: ''; position: absolute; top: -150px; right: -150px; width: 500px; height: 500px; background: radial-gradient(circle, rgba(201,168,76,0.05) 0%, transparent 65%); pointer-events: none; }
+    .form-eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
+    .form-eyebrow::before { content: ''; display: block; width: 24px; height: 1px; background: var(--gold); }
+    .form-hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(36px, 5vw, 60px); font-weight: 300; line-height: 1.1; margin-bottom: 16px; }
     .form-hero h1 em { font-style: italic; color: var(--gold); }
+    .form-hero p { font-size: 14px; color: var(--gray); max-width: 520px; line-height: 1.85; }
+    .form-meta { display: flex; gap: 40px; margin-top: 32px; padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.05); flex-wrap: wrap; }
+    .meta-label { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gray); }
+    .meta-val { font-family: 'Cormorant Garamond', serif; font-size: 16px; color: var(--white); margin-top: 3px; }
 
-    .form-hero p {
-      font-size: 14px;
-      color: var(--gray);
-      max-width: 520px;
-      line-height: 1.85;
-    }
-
-    .form-meta {
-      display: flex;
-      gap: 40px;
-      margin-top: 32px;
-      padding-top: 28px;
-      border-top: 1px solid rgba(255,255,255,0.05);
-      flex-wrap: wrap;
-    }
-
-    .meta-item { }
-    .meta-label {
-      font-size: 10px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--gray);
-    }
-    .meta-val {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 16px;
-      color: var(--white);
-      margin-top: 3px;
-    }
-
-    /* FORM BODY */
     .form-body { padding: 60px; max-width: 860px; }
-
-    /* SECTIONS */
-    .form-section {
-      margin-bottom: 64px;
-      padding-bottom: 64px;
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-    }
+    .form-section { margin-bottom: 64px; padding-bottom: 64px; border-bottom: 1px solid rgba(255,255,255,0.05); }
     .form-section:last-of-type { border-bottom: none; }
+    .section-header { display: flex; align-items: center; gap: 16px; margin-bottom: 32px; }
+    .section-num { width: 40px; height: 40px; border: 1px solid var(--gold-border); display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-size: 16px; color: var(--gold); flex-shrink: 0; }
+    .section-title { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 400; }
+    .section-desc { font-size: 13px; color: var(--gray); margin-top: 4px; }
 
-    .section-header {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      margin-bottom: 32px;
-    }
-
-    .section-num {
-      width: 40px; height: 40px;
-      border: 1px solid var(--gold-border);
-      display: flex; align-items: center; justify-content: center;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 16px;
-      color: var(--gold);
-      flex-shrink: 0;
-    }
-
-    .section-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 26px;
-      font-weight: 400;
-      line-height: 1.2;
-    }
-
-    .section-desc {
-      font-size: 13px;
-      color: var(--gray);
-      margin-top: 4px;
-    }
-
-    /* FIELDS */
     .field-group { display: flex; flex-direction: column; gap: 20px; }
-
     .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-
     .field { display: flex; flex-direction: column; gap: 7px; }
-
-    .field-label {
-      font-size: 11px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--gray);
-    }
-
+    .field-label { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gray); }
     .field-label .req { color: var(--gold); margin-left: 2px; }
+    .field-hint { font-size: 11px; color: var(--gray2); margin-top: -4px; font-style: italic; }
+    .field-divider { height: 1px; background: rgba(255,255,255,0.05); margin: 4px 0; }
 
-    .field-hint {
-      font-size: 11px;
-      color: var(--gray2);
-      margin-top: -4px;
-      font-style: italic;
+    input[type="text"], input[type="email"], input[type="url"], input[type="tel"], select, textarea {
+      width: 100%; padding: 13px 16px; background: var(--black2);
+      border: 1px solid rgba(255,255,255,0.08); color: var(--white);
+      font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 300;
+      outline: none; transition: border-color .25s; appearance: none;
     }
-
-    input[type="text"],
-    input[type="email"],
-    input[type="url"],
-    input[type="tel"],
-    select,
-    textarea {
-      width: 100%;
-      padding: 13px 16px;
-      background: var(--black2);
-      border: 1px solid rgba(255,255,255,0.08);
-      color: var(--white);
-      font-family: 'Inter', sans-serif;
-      font-size: 14px;
-      font-weight: 300;
-      outline: none;
-      transition: border-color .25s;
-      appearance: none;
-    }
-
     input::placeholder, textarea::placeholder { color: var(--gray2); }
-
-    input:focus, select:focus, textarea:focus {
-      border-color: rgba(201,168,76,0.5);
-      background: #141414;
-    }
-
-    select {
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1L6 7L11 1' stroke='%23888880' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 16px center;
-      cursor: pointer;
-    }
-
+    input:focus, select:focus, textarea:focus { border-color: rgba(201,168,76,0.5); background: #141414; }
+    input.error, select.error, textarea.error { border-color: var(--red) !important; }
+    select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1L6 7L11 1' stroke='%23888880' stroke-width='1.5' fill='none'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; cursor: pointer; }
     select option { background: #1a1a1a; color: var(--white); }
-
     textarea { resize: vertical; min-height: 110px; line-height: 1.65; }
 
-    /* CHECKBOXES */
-    .check-group { display: flex; flex-direction: column; gap: 12px; }
     .check-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
-
-    .check-item {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 12px 16px;
-      border: 1px solid rgba(255,255,255,0.07);
-      cursor: pointer;
-      transition: border-color .2s, background .2s;
-      position: relative;
-    }
-
+    .check-item { display: flex; align-items: center; gap: 12px; padding: 12px 16px; border: 1px solid rgba(255,255,255,0.07); cursor: pointer; transition: border-color .2s, background .2s; }
     .check-item:hover { border-color: var(--gold-border); background: var(--gold-dim); }
+    .check-item input[type="checkbox"] { width: 16px; height: 16px; padding: 0; margin: 0; flex-shrink: 0; accent-color: var(--gold); cursor: pointer; }
+    .check-item-label { font-size: 13px; color: var(--white); cursor: pointer; }
 
-    .check-item input[type="checkbox"] {
-      width: 16px; height: 16px;
-      padding: 0; margin: 0;
-      flex-shrink: 0;
-      accent-color: var(--gold);
-      cursor: pointer;
-    }
-
-    .check-item-label {
-      font-size: 13px;
-      color: var(--white);
-      cursor: pointer;
-      line-height: 1.4;
-    }
-
-    /* RADIO */
     .radio-group { display: flex; flex-direction: column; gap: 10px; }
-    .radio-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      padding: 14px 16px;
-      border: 1px solid rgba(255,255,255,0.07);
-      cursor: pointer;
-      transition: border-color .2s, background .2s;
-    }
+    .radio-item { display: flex; align-items: flex-start; gap: 12px; padding: 14px 16px; border: 1px solid rgba(255,255,255,0.07); cursor: pointer; transition: border-color .2s, background .2s; }
     .radio-item:hover { border-color: var(--gold-border); background: var(--gold-dim); }
-    .radio-item input[type="radio"] {
-      width: 16px; height: 16px;
-      padding: 0; margin: 0; margin-top: 2px;
-      flex-shrink: 0;
-      accent-color: var(--gold);
-      cursor: pointer;
-    }
-    .radio-item-text { }
+    .radio-item input[type="radio"] { width: 16px; height: 16px; padding: 0; margin: 0; margin-top: 2px; flex-shrink: 0; accent-color: var(--gold); cursor: pointer; }
     .radio-item-label { font-size: 13px; color: var(--white); font-weight: 400; }
     .radio-item-desc { font-size: 12px; color: var(--gray); margin-top: 2px; }
 
-    /* DIVIDER */
-    .field-divider {
-      height: 1px;
-      background: rgba(255,255,255,0.05);
-      margin: 4px 0;
-    }
-
-    /* SUBMIT */
-    .form-footer {
-      padding: 0 60px 60px;
-    }
-
-    .submit-box {
-      background: var(--black2);
-      border: 1px solid var(--gold-border);
-      padding: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 32px;
-      flex-wrap: wrap;
-    }
-
-    .submit-text h3 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 24px;
-      font-weight: 400;
-      margin-bottom: 6px;
-    }
-    .submit-text p {
-      font-size: 13px;
-      color: var(--gray);
-      max-width: 380px;
-      line-height: 1.7;
-    }
-
-    .btn-submit {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 16px 44px;
-      background: var(--gold);
-      color: var(--black);
-      font-family: 'Inter', sans-serif;
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      border: none;
-      cursor: pointer;
-      transition: background .3s, transform .2s;
-      flex-shrink: 0;
-    }
-    .btn-submit:hover { background: var(--gold-light); transform: translateY(-2px); }
-
-    /* SUCCESS STATE */
-    .success-msg {
-      display: none;
-      padding: 20px 24px;
-      background: rgba(201,168,76,0.1);
-      border: 1px solid var(--gold-border);
-      margin-top: 20px;
-    }
-    .success-msg p {
-      font-size: 13px;
-      color: var(--gold);
-      letter-spacing: 0.04em;
-    }
-
-    /* PROGRESS */
-    .progress-bar {
-      position: fixed;
-      bottom: 0; left: 0; right: 0;
-      height: 3px;
-      background: rgba(255,255,255,0.05);
-      z-index: 99;
-    }
-    .progress-fill {
-      height: 100%;
-      background: linear-gradient(90deg, var(--gold), var(--gold-light));
-      width: 0%;
-      transition: width .3s ease;
-    }
-
     /* UPLOAD */
-    .upload-box {
-      border: 1px dashed rgba(201,168,76,0.3);
-      background: var(--black2);
-      transition: border-color .25s, background .25s;
-    }
-    .upload-box:hover { border-color: var(--gold); background: var(--gold-dim); }
-    .upload-inner {
-      padding: 40px 24px;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      gap: 8px; cursor: pointer; text-align: center;
-    }
+    .upload-box { border: 1px dashed rgba(201,168,76,0.3); background: var(--black2); transition: border-color .25s, background .25s; }
+    .upload-box.dragover { border-color: var(--gold); background: var(--gold-dim); }
+    .upload-inner { padding: 40px 24px; display: flex; flex-direction: column; align-items: center; gap: 8px; cursor: pointer; text-align: center; }
     .upload-icon { font-size: 32px; }
     .upload-text { font-size: 14px; color: var(--white); font-weight: 400; }
     .upload-sub { font-size: 12px; color: var(--gray); }
-    .upload-preview {
-      display: flex; flex-wrap: wrap; gap: 10px;
-      padding: 0 16px 16px;
-    }
-    .upload-preview:empty { display: none; }
-    .preview-item {
-      position: relative; width: 90px; height: 90px;
-      border: 1px solid rgba(201,168,76,0.2); overflow: hidden;
-    }
+    .upload-preview { display: flex; flex-wrap: wrap; gap: 10px; padding: 0 16px 16px; }
+    .preview-item { position: relative; width: 90px; height: 90px; border: 1px solid rgba(201,168,76,0.2); overflow: hidden; }
     .preview-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .preview-remove {
-      position: absolute; top: 4px; right: 4px;
-      width: 20px; height: 20px;
-      background: rgba(10,10,10,0.85);
-      color: var(--gold); font-size: 12px;
-      display: flex; align-items: center; justify-content: center;
-      cursor: pointer; border: 1px solid rgba(201,168,76,0.3);
-      line-height: 1;
-    }
-    .preview-name {
-      position: absolute; bottom: 0; left: 0; right: 0;
-      background: rgba(10,10,10,0.75);
-      font-size: 9px; color: var(--gray);
-      padding: 3px 5px;
-      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-    }
-    .upload-count {
-      font-size: 11px; color: var(--gold);
-      padding: 8px 16px 12px; letter-spacing: 0.06em;
-    }
+    .preview-remove { position: absolute; top: 4px; right: 4px; width: 20px; height: 20px; background: rgba(10,10,10,0.9); color: var(--gold); font-size: 11px; display: flex; align-items: center; justify-content: center; cursor: pointer; border: 1px solid rgba(201,168,76,0.3); }
+    .preview-name { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(10,10,10,0.8); font-size: 9px; color: var(--gray); padding: 3px 5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .upload-count { font-size: 11px; color: var(--gold); padding: 0 16px 14px; letter-spacing: 0.06em; }
 
-    /* MOBILE */
+    /* SUBMIT */
+    .form-footer { padding: 0 60px 60px; }
+    .submit-box { background: var(--black2); border: 1px solid var(--gold-border); padding: 40px; display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap; }
+    .submit-text h3 { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 400; margin-bottom: 6px; }
+    .submit-text p { font-size: 13px; color: var(--gray); max-width: 380px; line-height: 1.7; }
+
+    .btn-submit { display: inline-flex; align-items: center; gap: 10px; padding: 16px 44px; background: var(--gold); color: var(--black); font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; border: none; cursor: pointer; transition: background .3s, transform .2s, opacity .2s; flex-shrink: 0; }
+    .btn-submit:hover:not(:disabled) { background: var(--gold-light); transform: translateY(-2px); }
+    .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+    .spinner { width: 14px; height: 14px; border: 2px solid rgba(8,8,8,0.3); border-top-color: var(--black); border-radius: 50%; animation: spin .7s linear infinite; display: none; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .alert-box { display: none; padding: 18px 24px; margin-top: 20px; border-left: 3px solid; }
+    .alert-box.success { background: rgba(201,168,76,0.08); border-color: var(--gold); }
+    .alert-box.error { background: rgba(220,60,60,0.08); border-color: rgba(220,60,60,0.7); }
+    .alert-box p { font-size: 13px; line-height: 1.7; }
+    .alert-box.success p { color: var(--gold); }
+    .alert-box.error p { color: rgba(240,100,100,1); }
+
+    .progress-bar { position: fixed; bottom: 0; left: 0; right: 0; height: 3px; background: rgba(255,255,255,0.05); z-index: 99; }
+    .progress-fill { height: 100%; background: linear-gradient(90deg, var(--gold), var(--gold-light)); width: 0%; transition: width .3s ease; }
+
     @media (max-width: 720px) {
       header, .form-body, .form-footer { padding: 24px; }
       .form-hero { padding: 40px 24px 32px; }
-      .field-row { grid-template-columns: 1fr; }
-      .check-row { grid-template-columns: 1fr; }
+      .field-row, .check-row { grid-template-columns: 1fr; }
       .submit-box { flex-direction: column; }
     }
   </style>
 </head>
 <body>
 
-  <!-- HEADER -->
   <header>
     <a href="https://kelbie-studio.github.io/Kelbie-Portfolio/" class="logo">Kelbie<span>.</span></a>
     <div class="header-tag">Client Intake Form</div>
   </header>
 
-  <!-- HERO -->
   <div class="form-hero">
     <div class="form-eyebrow">New project brief</div>
     <h1>Let's build your<br/><em>church website.</em></h1>
     <p>This form helps us understand your church, your vision, and everything we need to build a website that truly represents your community. Take your time — the more detail you give us, the better the final result.</p>
     <div class="form-meta">
-      <div class="meta-item">
-        <div class="meta-label">Studio</div>
-        <div class="meta-val">Kelbie Studio</div>
-      </div>
-      <div class="meta-item">
-        <div class="meta-label">Estimated time</div>
-        <div class="meta-val">10 – 15 minutes</div>
-      </div>
-      <div class="meta-item">
-        <div class="meta-label">Contact</div>
-        <div class="meta-val">kelbiestudio@gmail.com</div>
-      </div>
+      <div><div class="meta-label">Studio</div><div class="meta-val">Kelbie Studio</div></div>
+      <div><div class="meta-label">Estimated time</div><div class="meta-val">10 – 15 minutes</div></div>
+      <div><div class="meta-label">Contact</div><div class="meta-val">kelbiestudio@gmail.com</div></div>
     </div>
   </div>
 
-  <!-- FORM -->
-  <form id="churchForm" class="form-body" onsubmit="handleSubmit(event)">
+  <!-- ===================== FORM ===================== -->
+  <form id="churchForm" class="form-body" enctype="multipart/form-data">
 
-    <!-- 01. CHURCH BASICS -->
+    <!-- 01 CHURCH INFO -->
     <div class="form-section">
       <div class="section-header">
         <div class="section-num">01</div>
-        <div>
-          <div class="section-title">Church Information</div>
-          <div class="section-desc">Tell us the basics about your church so we can set up the site correctly.</div>
-        </div>
+        <div><div class="section-title">Church Information</div><div class="section-desc">Tell us the basics about your church.</div></div>
       </div>
       <div class="field-group">
         <div class="field-row">
           <div class="field">
             <label class="field-label">Church name <span class="req">*</span></label>
-            <input type="text" placeholder="e.g. Grace Community Church" required />
+            <input type="text" name="church_name" placeholder="e.g. Grace Community Church" required />
           </div>
           <div class="field">
             <label class="field-label">Denomination <span class="req">*</span></label>
-            <select required>
+            <select name="denomination" required>
               <option value="" disabled selected>Select denomination</option>
               <option>Non-denominational</option>
               <option>Pentecostal / Charismatic</option>
@@ -498,309 +173,247 @@
         </div>
         <div class="field-row">
           <div class="field">
-            <label class="field-label">City / State <span class="req">*</span></label>
-            <input type="text" placeholder="e.g. Kuala Lumpur, Malaysia" required />
+            <label class="field-label">City / Country <span class="req">*</span></label>
+            <input type="text" name="location" placeholder="e.g. Kuala Lumpur, Malaysia" required />
           </div>
           <div class="field">
             <label class="field-label">Year founded</label>
-            <input type="text" placeholder="e.g. 2004" />
+            <input type="text" name="year_founded" placeholder="e.g. 2004" />
           </div>
         </div>
         <div class="field">
           <label class="field-label">Church tagline or motto</label>
-          <p class="field-hint">A short phrase that describes your church's identity. Leave blank if you don't have one.</p>
-          <input type="text" placeholder="e.g. Where love meets community" />
+          <input type="text" name="tagline" placeholder="e.g. Where love meets community" />
         </div>
         <div class="field">
-          <label class="field-label">Brief description of your church <span class="req">*</span></label>
+          <label class="field-label">Brief description <span class="req">*</span></label>
           <p class="field-hint">Who are you? What do you believe? What makes your church community special?</p>
-          <textarea placeholder="Tell us about your church in your own words — vision, values, community..."></textarea>
+          <textarea name="description" placeholder="Tell us about your church — vision, values, community..." required></textarea>
         </div>
       </div>
     </div>
 
-    <!-- 02. CONTACT PERSON -->
+    <!-- 02 CONTACT -->
     <div class="form-section">
       <div class="section-header">
         <div class="section-num">02</div>
-        <div>
-          <div class="section-title">Your Contact Details</div>
-          <div class="section-desc">Who should we be in touch with throughout this project?</div>
-        </div>
+        <div><div class="section-title">Your Contact Details</div><div class="section-desc">Who should we be in touch with throughout this project?</div></div>
       </div>
       <div class="field-group">
         <div class="field-row">
           <div class="field">
             <label class="field-label">Full name <span class="req">*</span></label>
-            <input type="text" placeholder="e.g. Pastor James Okonkwo" required />
+            <input type="text" name="contact_name" placeholder="e.g. Pastor James Okonkwo" required />
           </div>
           <div class="field">
             <label class="field-label">Role in the church</label>
-            <input type="text" placeholder="e.g. Senior Pastor, Church Administrator" />
+            <input type="text" name="contact_role" placeholder="e.g. Senior Pastor, Church Administrator" />
           </div>
         </div>
         <div class="field-row">
           <div class="field">
             <label class="field-label">Email address <span class="req">*</span></label>
-            <input type="email" placeholder="e.g. pastor@gracechurch.com" required />
+            <input type="email" name="email" placeholder="e.g. pastor@gracechurch.com" required />
           </div>
           <div class="field">
-            <label class="field-label">WhatsApp / Phone number</label>
-            <input type="tel" placeholder="e.g. +60 12 345 6789" />
+            <label class="field-label">WhatsApp / Phone</label>
+            <input type="tel" name="phone" placeholder="e.g. +60 12 345 6789" />
           </div>
         </div>
         <div class="field">
-          <label class="field-label">Do you have an existing website or social media?</label>
-          <p class="field-hint">Share any links so we can review your current presence before we start.</p>
-          <input type="url" placeholder="e.g. https://www.facebook.com/gracechurchkl" />
+          <label class="field-label">Existing website or social media</label>
+          <input type="url" name="existing_site" placeholder="e.g. https://www.facebook.com/gracechurchkl" />
         </div>
       </div>
     </div>
 
-    <!-- 03. SERVICE TIMES -->
+    <!-- 03 SERVICE TIMES -->
     <div class="form-section">
       <div class="section-header">
         <div class="section-num">03</div>
-        <div>
-          <div class="section-title">Services & Meeting Times</div>
-          <div class="section-desc">We'll display this prominently so visitors know when to find you.</div>
-        </div>
+        <div><div class="section-title">Services & Meeting Times</div><div class="section-desc">We'll display this prominently so visitors know when to find you.</div></div>
       </div>
       <div class="field-group">
         <div class="field">
           <label class="field-label">Sunday service time(s) <span class="req">*</span></label>
-          <p class="field-hint">List all Sunday services. e.g. "First service: 8:00am | Second service: 10:30am"</p>
-          <textarea placeholder="Sunday services: &#10;e.g. 8:00am — First Service (English)&#10;     10:30am — Second Service (English)&#10;     1:00pm — Mandarin Service" style="min-height:90px;"></textarea>
+          <p class="field-hint">List all Sunday services with times and language if applicable.</p>
+          <textarea name="sunday_services" placeholder="e.g. 8:00am — First Service (English)&#10;10:30am — Second Service (English)&#10;1:00pm — Mandarin Service" style="min-height:90px;" required></textarea>
         </div>
         <div class="field">
           <label class="field-label">Midweek / other services</label>
-          <p class="field-hint">Bible study, prayer meetings, youth services, etc.</p>
-          <textarea placeholder="e.g. Wednesday 7:30pm — Prayer Meeting&#10;Friday 7:00pm — Youth Service" style="min-height:90px;"></textarea>
+          <textarea name="midweek_services" placeholder="e.g. Wednesday 7:30pm — Prayer Meeting&#10;Friday 7:00pm — Youth Service" style="min-height:80px;"></textarea>
         </div>
         <div class="field-row">
           <div class="field">
             <label class="field-label">Physical address</label>
-            <input type="text" placeholder="e.g. No. 12 Jalan Ampang, 50450 KL" />
+            <input type="text" name="address" placeholder="e.g. No. 12 Jalan Ampang, 50450 KL" />
           </div>
           <div class="field">
-            <label class="field-label">Google Maps link (if available)</label>
-            <input type="url" placeholder="Paste your Google Maps URL here" />
+            <label class="field-label">Google Maps link</label>
+            <input type="url" name="maps_link" placeholder="Paste your Google Maps URL here" />
           </div>
         </div>
       </div>
     </div>
 
-    <!-- 04. WEBSITE FEATURES -->
+    <!-- 04 FEATURES -->
     <div class="form-section">
       <div class="section-header">
         <div class="section-num">04</div>
-        <div>
-          <div class="section-title">Website Features</div>
-          <div class="section-desc">Select everything you'd like included on your website.</div>
-        </div>
+        <div><div class="section-title">Website Features</div><div class="section-desc">Select everything you'd like included.</div></div>
       </div>
       <div class="field-group">
         <div class="field">
-          <label class="field-label">Which pages do you need? <span class="req">*</span></label>
+          <label class="field-label">Pages needed</label>
           <div class="check-row" style="margin-top:8px;">
-            <label class="check-item"><input type="checkbox" checked /> <span class="check-item-label">Home / Landing page</span></label>
-            <label class="check-item"><input type="checkbox" checked /> <span class="check-item-label">About the church</span></label>
-            <label class="check-item"><input type="checkbox" checked /> <span class="check-item-label">Service times</span></label>
-            <label class="check-item"><input type="checkbox" checked /> <span class="check-item-label">Sermons / Messages</span></label>
-            <label class="check-item"><input type="checkbox" checked /> <span class="check-item-label">Events / Calendar</span></label>
-            <label class="check-item"><input type="checkbox" checked /> <span class="check-item-label">Give / Tithes & Offering</span></label>
-            <label class="check-item"><input type="checkbox" checked /> <span class="check-item-label">Photo Gallery</span></label>
-            <label class="check-item"><input type="checkbox" checked /> <span class="check-item-label">Contact / Find Us</span></label>
-            <label class="check-item"><input type="checkbox" /> <span class="check-item-label">Ministries / Departments</span></label>
-            <label class="check-item"><input type="checkbox" /> <span class="check-item-label">Prayer Request form</span></label>
-            <label class="check-item"><input type="checkbox" /> <span class="check-item-label">New visitor welcome page</span></label>
-            <label class="check-item"><input type="checkbox" /> <span class="check-item-label">Live stream / YouTube embed</span></label>
+            <label class="check-item"><input type="checkbox" name="pages" value="Home" checked /><span class="check-item-label">Home / Landing page</span></label>
+            <label class="check-item"><input type="checkbox" name="pages" value="About" checked /><span class="check-item-label">About the church</span></label>
+            <label class="check-item"><input type="checkbox" name="pages" value="Service Times" checked /><span class="check-item-label">Service times</span></label>
+            <label class="check-item"><input type="checkbox" name="pages" value="Sermons" checked /><span class="check-item-label">Sermons / Messages</span></label>
+            <label class="check-item"><input type="checkbox" name="pages" value="Events" checked /><span class="check-item-label">Events / Calendar</span></label>
+            <label class="check-item"><input type="checkbox" name="pages" value="Giving" checked /><span class="check-item-label">Give / Tithes & Offering</span></label>
+            <label class="check-item"><input type="checkbox" name="pages" value="Gallery" checked /><span class="check-item-label">Photo Gallery</span></label>
+            <label class="check-item"><input type="checkbox" name="pages" value="Contact" checked /><span class="check-item-label">Contact / Find Us</span></label>
+            <label class="check-item"><input type="checkbox" name="pages" value="Ministries" /><span class="check-item-label">Ministries / Departments</span></label>
+            <label class="check-item"><input type="checkbox" name="pages" value="Prayer Request" /><span class="check-item-label">Prayer Request form</span></label>
+            <label class="check-item"><input type="checkbox" name="pages" value="New Visitor" /><span class="check-item-label">New visitor welcome page</span></label>
+            <label class="check-item"><input type="checkbox" name="pages" value="Live Stream" /><span class="check-item-label">Live stream / YouTube embed</span></label>
           </div>
         </div>
         <div class="field-divider"></div>
         <div class="field">
-          <label class="field-label">Sermons section — what format? <span class="req">*</span></label>
+          <label class="field-label">Sermon format</label>
           <div class="check-row" style="margin-top:8px;">
-            <label class="check-item"><input type="checkbox" /> <span class="check-item-label">Video (YouTube / Vimeo embed)</span></label>
-            <label class="check-item"><input type="checkbox" /> <span class="check-item-label">Audio (MP3 player)</span></label>
-            <label class="check-item"><input type="checkbox" /> <span class="check-item-label">Written sermon notes (PDF)</span></label>
-            <label class="check-item"><input type="checkbox" /> <span class="check-item-label">Podcast / external link</span></label>
+            <label class="check-item"><input type="checkbox" name="sermon_format" value="Video" /><span class="check-item-label">Video (YouTube / Vimeo)</span></label>
+            <label class="check-item"><input type="checkbox" name="sermon_format" value="Audio" /><span class="check-item-label">Audio (MP3 player)</span></label>
+            <label class="check-item"><input type="checkbox" name="sermon_format" value="PDF Notes" /><span class="check-item-label">Sermon notes (PDF)</span></label>
+            <label class="check-item"><input type="checkbox" name="sermon_format" value="Podcast" /><span class="check-item-label">Podcast / external link</span></label>
           </div>
         </div>
         <div class="field-divider"></div>
         <div class="field">
-          <label class="field-label">Online giving — which platforms do you use?</label>
-          <p class="field-hint">We'll add buttons that link directly to your giving platform.</p>
+          <label class="field-label">Online giving platforms</label>
           <div class="check-row" style="margin-top:8px;">
-            <label class="check-item"><input type="checkbox" /> <span class="check-item-label">Bank transfer (display details)</span></label>
-            <label class="check-item"><input type="checkbox" /> <span class="check-item-label">PayPal</span></label>
-            <label class="check-item"><input type="checkbox" /> <span class="check-item-label">Stripe / Card payment</span></label>
-            <label class="check-item"><input type="checkbox" /> <span class="check-item-label">DuitNow / FPX (Malaysia)</span></label>
-            <label class="check-item"><input type="checkbox" /> <span class="check-item-label">GivingWay</span></label>
-            <label class="check-item"><input type="checkbox" /> <span class="check-item-label">Other (mention in notes)</span></label>
+            <label class="check-item"><input type="checkbox" name="giving" value="Bank Transfer" /><span class="check-item-label">Bank transfer</span></label>
+            <label class="check-item"><input type="checkbox" name="giving" value="PayPal" /><span class="check-item-label">PayPal</span></label>
+            <label class="check-item"><input type="checkbox" name="giving" value="Stripe" /><span class="check-item-label">Stripe / Card payment</span></label>
+            <label class="check-item"><input type="checkbox" name="giving" value="DuitNow" /><span class="check-item-label">DuitNow / FPX (Malaysia)</span></label>
+            <label class="check-item"><input type="checkbox" name="giving" value="GivingWay" /><span class="check-item-label">GivingWay</span></label>
+            <label class="check-item"><input type="checkbox" name="giving" value="Other" /><span class="check-item-label">Other (mention in notes)</span></label>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- 05. DESIGN PREFERENCES -->
+    <!-- 05 DESIGN -->
     <div class="form-section">
       <div class="section-header">
         <div class="section-num">05</div>
-        <div>
-          <div class="section-title">Design Preferences</div>
-          <div class="section-desc">Help us understand the look and feel you want.</div>
-        </div>
+        <div><div class="section-title">Design Preferences</div><div class="section-desc">Help us understand the look and feel you want.</div></div>
       </div>
       <div class="field-group">
         <div class="field">
           <label class="field-label">Overall feel <span class="req">*</span></label>
           <div class="radio-group" style="margin-top:8px;">
-            <label class="radio-item">
-              <input type="radio" name="feel" value="warm" />
-              <div class="radio-item-text">
-                <div class="radio-item-label">Warm & welcoming</div>
-                <div class="radio-item-desc">Cream tones, gold accents, inviting and family-friendly</div>
-              </div>
-            </label>
-            <label class="radio-item">
-              <input type="radio" name="feel" value="bold" />
-              <div class="radio-item-text">
-                <div class="radio-item-label">Bold & modern</div>
-                <div class="radio-item-desc">Strong typography, high contrast, contemporary and energetic</div>
-              </div>
-            </label>
-            <label class="radio-item">
-              <input type="radio" name="feel" value="clean" />
-              <div class="radio-item-text">
-                <div class="radio-item-label">Clean & minimal</div>
-                <div class="radio-item-desc">White space, simple layout, professional and calm</div>
-              </div>
-            </label>
-            <label class="radio-item">
-              <input type="radio" name="feel" value="traditional" />
-              <div class="radio-item-text">
-                <div class="radio-item-label">Royal & traditional</div>
-                <div class="radio-item-desc">Deep colours, classic typography, reverent and established</div>
-              </div>
-            </label>
+            <label class="radio-item"><input type="radio" name="feel" value="Warm and welcoming" /><div><div class="radio-item-label">Warm & welcoming</div><div class="radio-item-desc">Cream tones, gold accents, inviting and family-friendly</div></div></label>
+            <label class="radio-item"><input type="radio" name="feel" value="Bold and modern" /><div><div class="radio-item-label">Bold & modern</div><div class="radio-item-desc">Strong typography, high contrast, contemporary and energetic</div></div></label>
+            <label class="radio-item"><input type="radio" name="feel" value="Clean and minimal" /><div><div class="radio-item-label">Clean & minimal</div><div class="radio-item-desc">White space, simple layout, professional and calm</div></div></label>
+            <label class="radio-item"><input type="radio" name="feel" value="Royal and traditional" /><div><div class="radio-item-label">Royal & traditional</div><div class="radio-item-desc">Deep colours, classic typography, reverent and established</div></div></label>
           </div>
         </div>
         <div class="field">
           <label class="field-label">Preferred colours</label>
-          <p class="field-hint">Do you have church brand colours? Share hex codes, colour names, or describe them.</p>
-          <input type="text" placeholder="e.g. Navy blue + gold, or #1A2B5F and #C9A84C" />
+          <input type="text" name="colours" placeholder="e.g. Navy blue + gold, or #1A2B5F and #C9A84C" />
         </div>
         <div class="field">
           <label class="field-label">Church logo</label>
           <div class="radio-group" style="margin-top:8px;">
-            <label class="radio-item">
-              <input type="radio" name="logo" value="yes" />
-              <div class="radio-item-text">
-                <div class="radio-item-label">Yes, we have a logo</div>
-                <div class="radio-item-desc">Please email it to kelbiestudio@gmail.com as a PNG or SVG file</div>
-              </div>
-            </label>
-            <label class="radio-item">
-              <input type="radio" name="logo" value="no" />
-              <div class="radio-item-text">
-                <div class="radio-item-label">No, we don't have one</div>
-                <div class="radio-item-desc">We can design a simple text-based logo or church name treatment</div>
-              </div>
-            </label>
+            <label class="radio-item"><input type="radio" name="logo" value="Yes - will email it" /><div><div class="radio-item-label">Yes, we have a logo</div><div class="radio-item-desc">Please email it to kelbiestudio@gmail.com as a PNG or SVG</div></div></label>
+            <label class="radio-item"><input type="radio" name="logo" value="No logo yet" /><div><div class="radio-item-label">No, we don't have one</div><div class="radio-item-desc">We can design a simple text-based logo or church name treatment</div></div></label>
           </div>
         </div>
         <div class="field">
           <label class="field-label">Websites you like the look of</label>
-          <p class="field-hint">Share 1–3 links to church or other websites whose design you admire.</p>
-          <textarea placeholder="e.g. https://hillsong.com&#10;https://elevation.church&#10;Tell us what you like about them too" style="min-height:90px;"></textarea>
+          <textarea name="reference_sites" placeholder="e.g. https://hillsong.com&#10;https://elevation.church&#10;Tell us what you like about them too" style="min-height:90px;"></textarea>
         </div>
       </div>
     </div>
 
-    <!-- 06. CONTENT & MEDIA -->
+    <!-- 06 CONTENT & IMAGES -->
     <div class="form-section">
       <div class="section-header">
         <div class="section-num">06</div>
-        <div>
-          <div class="section-title">Content & Media</div>
-          <div class="section-desc">We need content from you to build the site. Let us know what you have ready.</div>
-        </div>
+        <div><div class="section-title">Content & Media</div><div class="section-desc">Tell us what you have ready and upload any images for the site.</div></div>
       </div>
       <div class="field-group">
         <div class="field">
-          <label class="field-label">What content do you currently have ready?</label>
+          <label class="field-label">Content you currently have ready</label>
           <div class="check-row" style="margin-top:8px;">
-            <label class="check-item"><input type="checkbox" /> <span class="check-item-label">Church photos</span></label>
-            <label class="check-item"><input type="checkbox" /> <span class="check-item-label">Sermon recordings</span></label>
-            <label class="check-item"><input type="checkbox" /> <span class="check-item-label">Pastor / team photos</span></label>
-            <label class="check-item"><input type="checkbox" /> <span class="check-item-label">Event photos</span></label>
-            <label class="check-item"><input type="checkbox" /> <span class="check-item-label">Written about / mission text</span></label>
-            <label class="check-item"><input type="checkbox" /> <span class="check-item-label">YouTube channel with videos</span></label>
+            <label class="check-item"><input type="checkbox" name="content_ready" value="Church photos" /><span class="check-item-label">Church photos</span></label>
+            <label class="check-item"><input type="checkbox" name="content_ready" value="Sermon recordings" /><span class="check-item-label">Sermon recordings</span></label>
+            <label class="check-item"><input type="checkbox" name="content_ready" value="Pastor photos" /><span class="check-item-label">Pastor / team photos</span></label>
+            <label class="check-item"><input type="checkbox" name="content_ready" value="Event photos" /><span class="check-item-label">Event photos</span></label>
+            <label class="check-item"><input type="checkbox" name="content_ready" value="Written text" /><span class="check-item-label">Written about / mission text</span></label>
+            <label class="check-item"><input type="checkbox" name="content_ready" value="YouTube channel" /><span class="check-item-label">YouTube channel with videos</span></label>
           </div>
         </div>
+
+        <!-- IMAGE UPLOAD -->
         <div class="field">
-          <label class="field-label">Languages the website should support</label>
+          <label class="field-label">Upload your church images</label>
+          <p class="field-hint">Church building, congregation, events, pastor, worship team — any photos you want on the site. JPG, PNG or WEBP · Max 10 files · 5MB each.</p>
+          <div class="upload-box" id="uploadBox">
+            <input type="file" id="imageUpload" name="attachments" multiple accept="image/jpeg,image/png,image/webp" style="display:none;" />
+            <div class="upload-inner" id="uploadInner">
+              <div class="upload-icon">📁</div>
+              <div class="upload-text">Click to upload images or drag & drop</div>
+              <div class="upload-sub">JPG, PNG or WEBP · Max 10 files · 5MB each</div>
+            </div>
+            <div class="upload-preview" id="uploadPreview"></div>
+            <div class="upload-count" id="uploadCount"></div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="field-label">Languages for the website</label>
           <div class="check-row" style="margin-top:8px;">
-            <label class="check-item"><input type="checkbox" checked /> <span class="check-item-label">English</span></label>
-            <label class="check-item"><input type="checkbox" /> <span class="check-item-label">Bahasa Malaysia</span></label>
-            <label class="check-item"><input type="checkbox" /> <span class="check-item-label">Mandarin / Chinese</span></label>
-            <label class="check-item"><input type="checkbox" /> <span class="check-item-label">Tamil</span></label>
+            <label class="check-item"><input type="checkbox" name="languages" value="English" checked /><span class="check-item-label">English</span></label>
+            <label class="check-item"><input type="checkbox" name="languages" value="Bahasa Malaysia" /><span class="check-item-label">Bahasa Malaysia</span></label>
+            <label class="check-item"><input type="checkbox" name="languages" value="Mandarin" /><span class="check-item-label">Mandarin / Chinese</span></label>
+            <label class="check-item"><input type="checkbox" name="languages" value="Tamil" /><span class="check-item-label">Tamil</span></label>
           </div>
         </div>
         <div class="field">
           <label class="field-label">Pastor / Leadership team</label>
-          <p class="field-hint">List the names and titles of your senior pastor and leadership team to be featured on the site.</p>
-          <textarea placeholder="e.g. Senior Pastor: Pastor David Lim&#10;Associate Pastor: Pastor Sarah Wong&#10;Youth Pastor: Bro. Marcus Tan"></textarea>
+          <p class="field-hint">List names and titles to be featured on the site.</p>
+          <textarea name="leadership" placeholder="e.g. Senior Pastor: Pastor David Lim&#10;Associate Pastor: Pastor Sarah Wong&#10;Youth Pastor: Bro. Marcus Tan"></textarea>
         </div>
         <div class="field">
-          <label class="field-label">YouTube channel link (for sermon embed)</label>
-          <input type="url" placeholder="e.g. https://www.youtube.com/@gracechurchkl" />
+          <label class="field-label">YouTube channel link</label>
+          <input type="url" name="youtube" placeholder="e.g. https://www.youtube.com/@gracechurchkl" />
         </div>
       </div>
     </div>
 
-    <!-- 07. TIMELINE & BUDGET -->
+    <!-- 07 TIMELINE & BUDGET -->
     <div class="form-section">
       <div class="section-header">
         <div class="section-num">07</div>
-        <div>
-          <div class="section-title">Timeline & Budget</div>
-          <div class="section-desc">Help us plan the project properly so we can deliver on time.</div>
-        </div>
+        <div><div class="section-title">Timeline & Budget</div><div class="section-desc">Help us plan the project properly.</div></div>
       </div>
       <div class="field-group">
         <div class="field">
           <label class="field-label">When do you need the website live? <span class="req">*</span></label>
           <div class="radio-group" style="margin-top:8px;">
-            <label class="radio-item">
-              <input type="radio" name="timeline" value="asap" />
-              <div class="radio-item-text">
-                <div class="radio-item-label">As soon as possible</div>
-                <div class="radio-item-desc">Urgent — we need it within 2 weeks</div>
-              </div>
-            </label>
-            <label class="radio-item">
-              <input type="radio" name="timeline" value="month" />
-              <div class="radio-item-text">
-                <div class="radio-item-label">Within a month</div>
-                <div class="radio-item-desc">We have some flexibility — 2–4 weeks is fine</div>
-              </div>
-            </label>
-            <label class="radio-item">
-              <input type="radio" name="timeline" value="flexible" />
-              <div class="radio-item-text">
-                <div class="radio-item-label">Flexible</div>
-                <div class="radio-item-desc">We just want it done right — take the time needed</div>
-              </div>
-            </label>
+            <label class="radio-item"><input type="radio" name="timeline" value="ASAP - within 2 weeks" /><div><div class="radio-item-label">As soon as possible</div><div class="radio-item-desc">Urgent — we need it within 2 weeks</div></div></label>
+            <label class="radio-item"><input type="radio" name="timeline" value="Within a month" /><div><div class="radio-item-label">Within a month</div><div class="radio-item-desc">2–4 weeks is fine</div></div></label>
+            <label class="radio-item"><input type="radio" name="timeline" value="Flexible" /><div><div class="radio-item-label">Flexible</div><div class="radio-item-desc">We just want it done right — take the time needed</div></div></label>
           </div>
         </div>
         <div class="field">
           <label class="field-label">Budget range (USD)</label>
-          <select>
+          <select name="budget">
             <option value="" disabled selected>Select a range</option>
-            
             <option>$500 – $1,000</option>
             <option>$1,000 – $2,500</option>
             <option>$2,500 – $5,000</option>
@@ -812,50 +425,28 @@
         <div class="field">
           <label class="field-label">Ongoing maintenance after launch?</label>
           <div class="radio-group" style="margin-top:8px;">
-            <label class="radio-item">
-              <input type="radio" name="maintenance" value="yes" />
-              <div class="radio-item-text">
-                <div class="radio-item-label">Yes — monthly updates & support</div>
-                <div class="radio-item-desc">We'd like Kelbie Studio to manage the site after launch</div>
-              </div>
-            </label>
-            <label class="radio-item">
-              <input type="radio" name="maintenance" value="no" />
-              <div class="radio-item-text">
-                <div class="radio-item-label">No — we'll manage it ourselves</div>
-                <div class="radio-item-desc">Hand over the files and we'll take it from there</div>
-              </div>
-            </label>
-            <label class="radio-item">
-              <input type="radio" name="maintenance" value="maybe" />
-              <div class="radio-item-text">
-                <div class="radio-item-label">Not sure yet</div>
-                <div class="radio-item-desc">We can discuss this after the build</div>
-              </div>
-            </label>
+            <label class="radio-item"><input type="radio" name="maintenance" value="Yes - monthly retainer" /><div><div class="radio-item-label">Yes — monthly updates & support</div><div class="radio-item-desc">We'd like Kelbie Studio to manage the site after launch</div></div></label>
+            <label class="radio-item"><input type="radio" name="maintenance" value="No - self managed" /><div><div class="radio-item-label">No — we'll manage it ourselves</div><div class="radio-item-desc">Hand over the files and we'll take it from there</div></div></label>
+            <label class="radio-item"><input type="radio" name="maintenance" value="Not sure yet" /><div><div class="radio-item-label">Not sure yet</div><div class="radio-item-desc">We can discuss this after the build</div></div></label>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- 08. ANYTHING ELSE -->
+    <!-- 08 ANYTHING ELSE -->
     <div class="form-section">
       <div class="section-header">
         <div class="section-num">08</div>
-        <div>
-          <div class="section-title">Anything Else</div>
-          <div class="section-desc">Anything else you'd like us to know before we get started.</div>
-        </div>
+        <div><div class="section-title">Anything Else</div><div class="section-desc">Anything else we should know before we get started.</div></div>
       </div>
       <div class="field-group">
         <div class="field">
-          <label class="field-label">Additional notes, special requests, or questions</label>
-          <p class="field-hint">Anything else that will help us build the right website for your church community.</p>
-          <textarea style="min-height:130px;" placeholder="e.g. We run a children's ministry called KidsZone and would love a dedicated section. We also live stream every Sunday at 10:30am on YouTube..."></textarea>
+          <label class="field-label">Additional notes or special requests</label>
+          <textarea name="notes" style="min-height:130px;" placeholder="e.g. We run a children's ministry called KidsZone and would love a dedicated section. We live stream every Sunday at 10:30am on YouTube..."></textarea>
         </div>
         <div class="field">
           <label class="field-label">How did you hear about Kelbie Studio?</label>
-          <select>
+          <select name="referral">
             <option value="" disabled selected>Select an option</option>
             <option>Referred by a friend or family member</option>
             <option>Saw our portfolio online</option>
@@ -869,124 +460,220 @@
     </div>
 
   </form>
+  <!-- ===================== END FORM ===================== -->
 
-  <!-- FOOTER / SUBMIT -->
   <div class="form-footer">
     <div class="submit-box">
       <div class="submit-text">
         <h3>Ready to submit your brief?</h3>
-        <p>Once we receive this, Solomon will review it and get back to you within 24 hours with next steps and a custom proposal for your church.</p>
+        <p>Once we receive this, Solomon will review it and get back to you within 24 hours with next steps and a custom proposal.</p>
       </div>
-      <button class="btn-submit" onclick="handleSubmit(event)">
-        Submit brief →
+      <button class="btn-submit" id="submitBtn" type="button">
+        <span id="btnText">Submit brief →</span>
+        <div class="spinner" id="spinner"></div>
       </button>
     </div>
-    <div class="success-msg" id="successMsg">
-      <p>✓ Thank you — your brief has been submitted. Solomon will be in touch within 24 hours. You can also reach us directly on WhatsApp: +234 814 319 3047</p>
+    <div class="alert-box success" id="successAlert">
+      <p>✓ Your brief has been submitted successfully! Solomon will review everything and get back to you within 24 hours. You can also reach him directly on WhatsApp: +234 814 319 3047</p>
+    </div>
+    <div class="alert-box error" id="errorAlert">
+      <p id="errorMsg">Something went wrong. Please try again or email us directly at kelbiestudio@gmail.com</p>
     </div>
   </div>
 
-  <!-- PROGRESS BAR -->
   <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
 
   <script>
-    let uploadedFiles = [];
+    // ─── Scroll progress ───
+    window.addEventListener('scroll', function () {
+      var pct = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+      document.getElementById('progressFill').style.width = pct + '%';
+    });
 
-    function handleFiles(files) {
-      const preview = document.getElementById('uploadPreview');
-      const maxFiles = 10;
+    // ─── Image upload ───
+    var uploadedFiles = [];
+    var imageInput   = document.getElementById('imageUpload');
+    var uploadInner  = document.getElementById('uploadInner');
+    var uploadPreview = document.getElementById('uploadPreview');
+    var uploadCount  = document.getElementById('uploadCount');
+    var uploadBox    = document.getElementById('uploadBox');
 
-      Array.from(files).forEach(file => {
-        if (uploadedFiles.length >= maxFiles) {
-          alert('Maximum 10 images allowed.'); return;
-        }
-        if (file.size > 5 * 1024 * 1024) {
-          alert(file.name + ' is too large. Max size is 5MB per image.'); return;
-        }
+    uploadInner.addEventListener('click', function () { imageInput.click(); });
+
+    imageInput.addEventListener('change', function () { processFiles(this.files); });
+
+    uploadBox.addEventListener('dragover', function (e) {
+      e.preventDefault();
+      uploadBox.classList.add('dragover');
+    });
+    uploadBox.addEventListener('dragleave', function () { uploadBox.classList.remove('dragover'); });
+    uploadBox.addEventListener('drop', function (e) {
+      e.preventDefault();
+      uploadBox.classList.remove('dragover');
+      processFiles(e.dataTransfer.files);
+    });
+
+    function processFiles(files) {
+      Array.from(files).forEach(function (file) {
+        if (uploadedFiles.length >= 10) { alert('Maximum 10 images allowed.'); return; }
+        if (file.size > 5 * 1024 * 1024) { alert(file.name + ' exceeds the 5MB limit.'); return; }
+        if (uploadedFiles.some(function (f) { return f.name === file.name; })) return;
 
         uploadedFiles.push(file);
-        const reader = new FileReader();
-        reader.onload = (e) => {
-          const item = document.createElement('div');
+        var reader = new FileReader();
+        reader.onload = function (e) {
+          var item = document.createElement('div');
           item.className = 'preview-item';
-          item.innerHTML = `
-            <img src="${e.target.result}" alt="${file.name}" />
-            <div class="preview-name">${file.name}</div>
-            <div class="preview-remove" onclick="removeFile(this, '${file.name}')">✕</div>
-          `;
-          preview.appendChild(item);
-          updateCount();
+
+          var img = document.createElement('img');
+          img.src = e.target.result;
+          img.alt = file.name;
+
+          var nameEl = document.createElement('div');
+          nameEl.className = 'preview-name';
+          nameEl.textContent = file.name;
+
+          var btn = document.createElement('div');
+          btn.className = 'preview-remove';
+          btn.textContent = '✕';
+          btn.addEventListener('click', function () {
+            uploadedFiles = uploadedFiles.filter(function (f) { return f.name !== file.name; });
+            item.remove();
+            refreshCount();
+          });
+
+          item.appendChild(img);
+          item.appendChild(nameEl);
+          item.appendChild(btn);
+          uploadPreview.appendChild(item);
+          refreshCount();
         };
         reader.readAsDataURL(file);
       });
     }
 
-    function removeFile(el, name) {
-      uploadedFiles = uploadedFiles.filter(f => f.name !== name);
-      el.parentElement.remove();
-      updateCount();
+    function refreshCount() {
+      var n = uploadedFiles.length;
+      uploadCount.textContent = n > 0 ? n + (n === 1 ? ' image selected' : ' images selected') : '';
     }
 
-    function updateCount() {
-      const box = document.getElementById('uploadBox');
-      let counter = box.querySelector('.upload-count');
-      if (uploadedFiles.length > 0) {
-        if (!counter) {
-          counter = document.createElement('div');
-          counter.className = 'upload-count';
-          box.appendChild(counter);
-        }
-        counter.textContent = uploadedFiles.length + ' image' + (uploadedFiles.length > 1 ? 's' : ') + ' selected';
-      } else if (counter) {
-        counter.remove();
-      }
-    }
-
-    // Drag and drop support
-    const uploadBox = document.getElementById('uploadBox');
-    uploadBox.addEventListener('dragover', e => { e.preventDefault(); uploadBox.style.borderColor = 'var(--gold)'; });
-    uploadBox.addEventListener('dragleave', () => { uploadBox.style.borderColor = ''  ; });
-    uploadBox.addEventListener('drop', e => {
-      e.preventDefault();
-      uploadBox.style.borderColor = '';
-      handleFiles(e.dataTransfer.files);
-    });
-
-    // Scroll progress bar
-    window.addEventListener('scroll', () => {
-      const scrollTop = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const progress = (scrollTop / docHeight) * 100;
-      document.getElementById('progressFill').style.width = progress + '%';
-    });
-
-    // Submit handler
-    function handleSubmit(e) {
-      e.preventDefault();
-      const form = document.getElementById('churchForm');
-      const required = form.querySelectorAll('[required]');
-      let valid = true;
-
-      required.forEach(field => {
+    // ─── Form validation ───
+    function validateForm() {
+      var form = document.getElementById('churchForm');
+      var requiredFields = form.querySelectorAll('[required]');
+      var valid = true;
+      requiredFields.forEach(function (field) {
         if (!field.value.trim()) {
-          field.style.borderColor = 'rgba(220,60,60,0.6)';
+          field.classList.add('error');
           valid = false;
         } else {
-          field.style.borderColor = '';
+          field.classList.remove('error');
         }
       });
-
-      if (!valid) {
-        alert('Please fill in all required fields marked with *');
-        return;
-      }
-
-      // Show success message
-      document.getElementById('successMsg').style.display = 'block';
-      document.getElementById('successMsg').scrollIntoView({ behavior: 'smooth', block: 'center' });
-
-      // In production: submit to Formspree / EmailJS / backend here
+      if (!valid) { alert('Please fill in all required fields marked with *.'); }
+      return valid;
     }
+
+    // ─── Collect checkbox/radio values as readable text ───
+    function getCheckedValues(name) {
+      var vals = [];
+      document.querySelectorAll('input[name="' + name + '"]:checked').forEach(function (el) {
+        vals.push(el.value);
+      });
+      return vals.join(', ') || 'None selected';
+    }
+
+    function getRadioValue(name) {
+      var el = document.querySelector('input[name="' + name + '"]:checked');
+      return el ? el.value : 'Not answered';
+    }
+
+    // ─── Submit to Formspree ───
+    document.getElementById('submitBtn').addEventListener('click', function () {
+      if (!validateForm()) return;
+
+      var btn     = document.getElementById('submitBtn');
+      var btnText = document.getElementById('btnText');
+      var spinner = document.getElementById('spinner');
+
+      btn.disabled    = true;
+      btnText.textContent = 'Sending...';
+      spinner.style.display = 'block';
+
+      document.getElementById('successAlert').style.display = 'none';
+      document.getElementById('errorAlert').style.display   = 'none';
+
+      // Build FormData — collect all named inputs
+      var form = document.getElementById('churchForm');
+      var data = new FormData(form);
+
+      // Add checkbox/radio summaries as readable text fields
+      data.append('Pages_Needed',       getCheckedValues('pages'));
+      data.append('Sermon_Format',      getCheckedValues('sermon_format'));
+      data.append('Giving_Platforms',   getCheckedValues('giving'));
+      data.append('Content_Ready',      getCheckedValues('content_ready'));
+      data.append('Languages',          getCheckedValues('languages'));
+      data.append('Design_Feel',        getRadioValue('feel'));
+      data.append('Logo_Status',        getRadioValue('logo'));
+      data.append('Timeline',           getRadioValue('timeline'));
+      data.append('Maintenance',        getRadioValue('maintenance'));
+
+      // Attach uploaded images
+      uploadedFiles.forEach(function (file) {
+        data.append('church_image', file, file.name);
+      });
+
+      /*
+       * ╔══════════════════════════════════════════════════════════════╗
+       * ║  SETUP INSTRUCTIONS — READ BEFORE GOING LIVE               ║
+       * ║                                                              ║
+       * ║  1. Go to https://formspree.io and create a free account    ║
+       * ║  2. Click "New Form" and name it "Church Intake"            ║
+       * ║  3. Copy your form endpoint — looks like:                   ║
+       * ║     https://formspree.io/f/XXXXXXXX                         ║
+       * ║  4. Replace YOUR_FORMSPREE_ID below with your actual ID     ║
+       * ║                                                              ║
+       * ║  Formspree free plan: 50 submissions/month                  ║
+       * ║  All data + images land directly in kelbiestudio@gmail.com  ║
+       * ╚══════════════════════════════════════════════════════════════╝
+       */
+      var FORMSPREE_ENDPOINT = 'https://formspree.io/f/xykarnzz';
+
+      fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      })
+      .then(function (response) {
+        btn.disabled = false;
+        btnText.textContent = 'Submit brief →';
+        spinner.style.display = 'none';
+
+        if (response.ok) {
+          document.getElementById('successAlert').style.display = 'block';
+          document.getElementById('successAlert').scrollIntoView({ behavior: 'smooth', block: 'center' });
+          form.reset();
+          uploadedFiles = [];
+          uploadPreview.innerHTML = '';
+          refreshCount();
+        } else {
+          response.json().then(function (err) {
+            var msg = (err && err.errors) ? err.errors.map(function (e) { return e.message; }).join(', ') : 'Submission failed.';
+            document.getElementById('errorMsg').textContent = msg + ' — or email us directly at kelbiestudio@gmail.com';
+            document.getElementById('errorAlert').style.display = 'block';
+            document.getElementById('errorAlert').scrollIntoView({ behavior: 'smooth', block: 'center' });
+          });
+        }
+      })
+      .catch(function () {
+        btn.disabled = false;
+        btnText.textContent = 'Submit brief →';
+        spinner.style.display = 'none';
+        document.getElementById('errorMsg').textContent = 'Network error — please check your connection and try again, or email kelbiestudio@gmail.com directly.';
+        document.getElementById('errorAlert').style.display = 'block';
+        document.getElementById('errorAlert').scrollIntoView({ behavior: 'smooth', block: 'center' });
+      });
+    });
   </script>
 </body>
 </html>
