@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Website Brief — Kelbie Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #080808;
+      --black2: #111111;
+      --gold: #c9a84c;
+      --gold-light: #e2c47a;
+      --gold-dim: rgba(201,168,76,0.12);
+      --gold-border: rgba(201,168,76,0.25);
+      --white: #f5f3ee;
+      --gray: #888880;
+      --gray2: #555550;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    /* HEADER */
+    header {
+      padding: 40px 60px 0;
+      border-bottom: 1px solid rgba(201,168,76,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 28px;
+    }
+
+    .logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: var(--white);
+      text-decoration: none;
+    }
+    .logo span { color: var(--gold); }
+
+    .header-tag {
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gray);
+      border: 1px solid rgba(201,168,76,0.15);
+      padding: 6px 14px;
+    }
+
+    /* HERO */
+    .form-hero {
+      padding: 64px 60px 48px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      background: var(--black2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .form-hero::before {
+      content: '';
+      position: absolute;
+      top: -150px; right: -150px;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(201,168,76,0.05) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .form-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 10px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+    .form-eyebrow::before {
+      content: '';
+      display: block;
+      width: 24px; height: 1px;
+      background: var(--gold);
+    }
+
+    .form-hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(36px, 5vw, 60px);
+      font-weight: 300;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    .form-hero h1 em { font-style: italic; color: var(--gold); }
+
+    .form-hero p {
+      font-size: 14px;
+      color: var(--gray);
+      max-width: 520px;
+      line-height: 1.85;
+    }
+
+    .form-meta {
+      display: flex;
+      gap: 40px;
+      margin-top: 32px;
+      padding-top: 28px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      flex-wrap: wrap;
+    }
+
+    .meta-item { }
+    .meta-label {
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+    .meta-val {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 16px;
+      color: var(--white);
+      margin-top: 3px;
+    }
+
+    /* FORM BODY */
+    .form-body { padding: 60px; max-width: 860px; }
+
+    /* SECTIONS */
+    .form-section {
+      margin-bottom: 64px;
+      padding-bottom: 64px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .form-section:last-of-type { border-bottom: none; }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .section-num {
+      width: 40px; height: 40px;
+      border: 1px solid var(--gold-border);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 16px;
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px;
+      font-weight: 400;
+      line-height: 1.2;
+    }
+
+    .section-desc {
+      font-size: 13px;
+      color: var(--gray);
+      margin-top: 4px;
+    }
+
+    /* FIELDS */
+    .field-group { display: flex; flex-direction: column; gap: 20px; }
+
+    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+    .field { display: flex; flex-direction: column; gap: 7px; }
+
+    .field-label {
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+
+    .field-label .req { color: var(--gold); margin-left: 2px; }
+
+    .field-hint {
+      font-size: 11px;
+      color: var(--gray2);
+      margin-top: -4px;
+      font-style: italic;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="url"],
+    input[type="tel"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 13px 16px;
+      background: var(--black2);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 300;
+      outline: none;
+      transition: border-color .25s;
+      appearance: none;
+    }
+
+    input::placeholder, textarea::placeholder { color: var(--gray2); }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: rgba(201,168,76,0.5);
+      background: #141414;
+    }
+
+    select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1L6 7L11 1' stroke='%23888880' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+      cursor: pointer;
+    }
+
+    select option { background: #1a1a1a; color: var(--white); }
+
+    textarea { resize: vertical; min-height: 110px; line-height: 1.65; }
+
+    /* CHECKBOXES */
+    .check-group { display: flex; flex-direction: column; gap: 12px; }
+    .check-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+
+    .check-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      border: 1px solid rgba(255,255,255,0.07);
+      cursor: pointer;
+      transition: border-color .2s, background .2s;
+      position: relative;
+    }
+
+    .check-item:hover { border-color: var(--gold-border); background: var(--gold-dim); }
+
+    .check-item input[type="checkbox"] {
+      width: 16px; height: 16px;
+      padding: 0; margin: 0;
+      flex-shrink: 0;
+      accent-color: var(--gold);
+      cursor: pointer;
+    }
+
+    .check-item-label {
+      font-size: 13px;
+      color: var(--white);
+      cursor: pointer;
+      line-height: 1.4;
+    }
+
+    /* RADIO */
+    .radio-group { display: flex; flex-direction: column; gap: 10px; }
+    .radio-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 14px 16px;
+      border: 1px solid rgba(255,255,255,0.07);
+      cursor: pointer;
+      transition: border-color .2s, background .2s;
+    }
+    .radio-item:hover { border-color: var(--gold-border); background: var(--gold-dim); }
+    .radio-item input[type="radio"] {
+      width: 16px; height: 16px;
+      padding: 0; margin: 0; margin-top: 2px;
+      flex-shrink: 0;
+      accent-color: var(--gold);
+      cursor: pointer;
+    }
+    .radio-item-text { }
+    .radio-item-label { font-size: 13px; color: var(--white); font-weight: 400; }
+    .radio-item-desc { font-size: 12px; color: var(--gray); margin-top: 2px; }
+
+    /* DIVIDER */
+    .field-divider {
+      height: 1px;
+      background: rgba(255,255,255,0.05);
+      margin: 4px 0;
+    }
+
+    /* SUBMIT */
+    .form-footer {
+      padding: 0 60px 60px;
+    }
+
+    .submit-box {
+      background: var(--black2);
+      border: 1px solid var(--gold-border);
+      padding: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+
+    .submit-text h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 24px;
+      font-weight: 400;
+      margin-bottom: 6px;
+    }
+    .submit-text p {
+      font-size: 13px;
+      color: var(--gray);
+      max-width: 380px;
+      line-height: 1.7;
+    }
+
+    .btn-submit {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 44px;
+      background: var(--gold);
+      color: var(--black);
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      transition: background .3s, transform .2s;
+      flex-shrink: 0;
+    }
+    .btn-submit:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+    /* SUCCESS STATE */
+    .success-msg {
+      display: none;
+      padding: 20px 24px;
+      background: rgba(201,168,76,0.1);
+      border: 1px solid var(--gold-border);
+      margin-top: 20px;
+    }
+    .success-msg p {
+      font-size: 13px;
+      color: var(--gold);
+      letter-spacing: 0.04em;
+    }
+
+    /* PROGRESS */
+    .progress-bar {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: rgba(255,255,255,0.05);
+      z-index: 99;
+    }
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light));
+      width: 0%;
+      transition: width .3s ease;
+    }
+
+    /* UPLOAD */
+    .upload-box {
+      border: 1px dashed rgba(201,168,76,0.3);
+      background: var(--black2);
+      transition: border-color .25s, background .25s;
+    }
+    .upload-box:hover { border-color: var(--gold); background: var(--gold-dim); }
+    .upload-inner {
+      padding: 40px 24px;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 8px; cursor: pointer; text-align: center;
+    }
+    .upload-icon { font-size: 32px; }
+    .upload-text { font-size: 14px; color: var(--white); font-weight: 400; }
+    .upload-sub { font-size: 12px; color: var(--gray); }
+    .upload-preview {
+      display: flex; flex-wrap: wrap; gap: 10px;
+      padding: 0 16px 16px;
+    }
+    .upload-preview:empty { display: none; }
+    .preview-item {
+      position: relative; width: 90px; height: 90px;
+      border: 1px solid rgba(201,168,76,0.2); overflow: hidden;
+    }
+    .preview-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .preview-remove {
+      position: absolute; top: 4px; right: 4px;
+      width: 20px; height: 20px;
+      background: rgba(10,10,10,0.85);
+      color: var(--gold); font-size: 12px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; border: 1px solid rgba(201,168,76,0.3);
+      line-height: 1;
+    }
+    .preview-name {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: rgba(10,10,10,0.75);
+      font-size: 9px; color: var(--gray);
+      padding: 3px 5px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .upload-count {
+      font-size: 11px; color: var(--gold);
+      padding: 8px 16px 12px; letter-spacing: 0.06em;
+    }
+
+    /* MOBILE */
+    @media (max-width: 720px) {
+      header, .form-body, .form-footer { padding: 24px; }
+      .form-hero { padding: 40px 24px 32px; }
+      .field-row { grid-template-columns: 1fr; }
+      .check-row { grid-template-columns: 1fr; }
+      .submit-box { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <a href="https://kelbie-studio.github.io/Kelbie-Portfolio/" class="logo">Kelbie<span>.</span></a>
+    <div class="header-tag">Client Intake Form</div>
+  </header>
+
+  <!-- HERO -->
+  <div class="form-hero">
+    <div class="form-eyebrow">New project brief</div>
+    <h1>Let's build your<br/><em>church website.</em></h1>
+    <p>This form helps us understand your church, your vision, and everything we need to build a website that truly represents your community. Take your time — the more detail you give us, the better the final result.</p>
+    <div class="form-meta">
+      <div class="meta-item">
+        <div class="meta-label">Studio</div>
+        <div class="meta-val">Kelbie Studio</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">Estimated time</div>
+        <div class="meta-val">10 – 15 minutes</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">Contact</div>
+        <div class="meta-val">kelbiestudio@gmail.com</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FORM -->
+  <form id="churchForm" class="form-body" onsubmit="handleSubmit(event)">
+
+    <!-- 01. CHURCH BASICS -->
+    <div class="form-section">
+      <div class="section-header">
+        <div class="section-num">01</div>
+        <div>
+          <div class="section-title">Church Information</div>
+          <div class="section-desc">Tell us the basics about your church so we can set up the site correctly.</div>
+        </div>
+      </div>
+      <div class="field-group">
+        <div class="field-row">
+          <div class="field">
+            <label class="field-label">Church name <span class="req">*</span></label>
+            <input type="text" placeholder="e.g. Grace Community Church" required />
+          </div>
+          <div class="field">
+            <label class="field-label">Denomination <span class="req">*</span></label>
+            <select required>
+              <option value="" disabled selected>Select denomination</option>
+              <option>Non-denominational</option>
+              <option>Pentecostal / Charismatic</option>
+              <option>Baptist</option>
+              <option>Methodist</option>
+              <option>Anglican / Episcopal</option>
+              <option>Catholic</option>
+              <option>Presbyterian</option>
+              <option>Lutheran</option>
+              <option>Other (specify in notes)</option>
+            </select>
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label class="field-label">City / State <span class="req">*</span></label>
+            <input type="text" placeholder="e.g. Kuala Lumpur, Malaysia" required />
+          </div>
+          <div class="field">
+            <label class="field-label">Year founded</label>
+            <input type="text" placeholder="e.g. 2004" />
+          </div>
+        </div>
+        <div class="field">
+          <label class="field-label">Church tagline or motto</label>
+          <p class="field-hint">A short phrase that describes your church's identity. Leave blank if you don't have one.</p>
+          <input type="text" placeholder="e.g. Where love meets community" />
+        </div>
+        <div class="field">
+          <label class="field-label">Brief description of your church <span class="req">*</span></label>
+          <p class="field-hint">Who are you? What do you believe? What makes your church community special?</p>
+          <textarea placeholder="Tell us about your church in your own words — vision, values, community..."></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- 02. CONTACT PERSON -->
+    <div class="form-section">
+      <div class="section-header">
+        <div class="section-num">02</div>
+        <div>
+          <div class="section-title">Your Contact Details</div>
+          <div class="section-desc">Who should we be in touch with throughout this project?</div>
+        </div>
+      </div>
+      <div class="field-group">
+        <div class="field-row">
+          <div class="field">
+            <label class="field-label">Full name <span class="req">*</span></label>
+            <input type="text" placeholder="e.g. Pastor James Okonkwo" required />
+          </div>
+          <div class="field">
+            <label class="field-label">Role in the church</label>
+            <input type="text" placeholder="e.g. Senior Pastor, Church Administrator" />
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label class="field-label">Email address <span class="req">*</span></label>
+            <input type="email" placeholder="e.g. pastor@gracechurch.com" required />
+          </div>
+          <div class="field">
+            <label class="field-label">WhatsApp / Phone number</label>
+            <input type="tel" placeholder="e.g. +60 12 345 6789" />
+          </div>
+        </div>
+        <div class="field">
+          <label class="field-label">Do you have an existing website or social media?</label>
+          <p class="field-hint">Share any links so we can review your current presence before we start.</p>
+          <input type="url" placeholder="e.g. https://www.facebook.com/gracechurchkl" />
+        </div>
+      </div>
+    </div>
+
+    <!-- 03. SERVICE TIMES -->
+    <div class="form-section">
+      <div class="section-header">
+        <div class="section-num">03</div>
+        <div>
+          <div class="section-title">Services & Meeting Times</div>
+          <div class="section-desc">We'll display this prominently so visitors know when to find you.</div>
+        </div>
+      </div>
+      <div class="field-group">
+        <div class="field">
+          <label class="field-label">Sunday service time(s) <span class="req">*</span></label>
+          <p class="field-hint">List all Sunday services. e.g. "First service: 8:00am | Second service: 10:30am"</p>
+          <textarea placeholder="Sunday services: &#10;e.g. 8:00am — First Service (English)&#10;     10:30am — Second Service (English)&#10;     1:00pm — Mandarin Service" style="min-height:90px;"></textarea>
+        </div>
+        <div class="field">
+          <label class="field-label">Midweek / other services</label>
+          <p class="field-hint">Bible study, prayer meetings, youth services, etc.</p>
+          <textarea placeholder="e.g. Wednesday 7:30pm — Prayer Meeting&#10;Friday 7:00pm — Youth Service" style="min-height:90px;"></textarea>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label class="field-label">Physical address</label>
+            <input type="text" placeholder="e.g. No. 12 Jalan Ampang, 50450 KL" />
+          </div>
+          <div class="field">
+            <label class="field-label">Google Maps link (if available)</label>
+            <input type="url" placeholder="Paste your Google Maps URL here" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 04. WEBSITE FEATURES -->
+    <div class="form-section">
+      <div class="section-header">
+        <div class="section-num">04</div>
+        <div>
+          <div class="section-title">Website Features</div>
+          <div class="section-desc">Select everything you'd like included on your website.</div>
+        </div>
+      </div>
+      <div class="field-group">
+        <div class="field">
+          <label class="field-label">Which pages do you need? <span class="req">*</span></label>
+          <div class="check-row" style="margin-top:8px;">
+            <label class="check-item"><input type="checkbox" checked /> <span class="check-item-label">Home / Landing page</span></label>
+            <label class="check-item"><input type="checkbox" checked /> <span class="check-item-label">About the church</span></label>
+            <label class="check-item"><input type="checkbox" checked /> <span class="check-item-label">Service times</span></label>
+            <label class="check-item"><input type="checkbox" checked /> <span class="check-item-label">Sermons / Messages</span></label>
+            <label class="check-item"><input type="checkbox" checked /> <span class="check-item-label">Events / Calendar</span></label>
+            <label class="check-item"><input type="checkbox" checked /> <span class="check-item-label">Give / Tithes & Offering</span></label>
+            <label class="check-item"><input type="checkbox" checked /> <span class="check-item-label">Photo Gallery</span></label>
+            <label class="check-item"><input type="checkbox" checked /> <span class="check-item-label">Contact / Find Us</span></label>
+            <label class="check-item"><input type="checkbox" /> <span class="check-item-label">Ministries / Departments</span></label>
+            <label class="check-item"><input type="checkbox" /> <span class="check-item-label">Prayer Request form</span></label>
+            <label class="check-item"><input type="checkbox" /> <span class="check-item-label">New visitor welcome page</span></label>
+            <label class="check-item"><input type="checkbox" /> <span class="check-item-label">Live stream / YouTube embed</span></label>
+          </div>
+        </div>
+        <div class="field-divider"></div>
+        <div class="field">
+          <label class="field-label">Sermons section — what format? <span class="req">*</span></label>
+          <div class="check-row" style="margin-top:8px;">
+            <label class="check-item"><input type="checkbox" /> <span class="check-item-label">Video (YouTube / Vimeo embed)</span></label>
+            <label class="check-item"><input type="checkbox" /> <span class="check-item-label">Audio (MP3 player)</span></label>
+            <label class="check-item"><input type="checkbox" /> <span class="check-item-label">Written sermon notes (PDF)</span></label>
+            <label class="check-item"><input type="checkbox" /> <span class="check-item-label">Podcast / external link</span></label>
+          </div>
+        </div>
+        <div class="field-divider"></div>
+        <div class="field">
+          <label class="field-label">Online giving — which platforms do you use?</label>
+          <p class="field-hint">We'll add buttons that link directly to your giving platform.</p>
+          <div class="check-row" style="margin-top:8px;">
+            <label class="check-item"><input type="checkbox" /> <span class="check-item-label">Bank transfer (display details)</span></label>
+            <label class="check-item"><input type="checkbox" /> <span class="check-item-label">PayPal</span></label>
+            <label class="check-item"><input type="checkbox" /> <span class="check-item-label">Stripe / Card payment</span></label>
+            <label class="check-item"><input type="checkbox" /> <span class="check-item-label">DuitNow / FPX (Malaysia)</span></label>
+            <label class="check-item"><input type="checkbox" /> <span class="check-item-label">GivingWay</span></label>
+            <label class="check-item"><input type="checkbox" /> <span class="check-item-label">Other (mention in notes)</span></label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 05. DESIGN PREFERENCES -->
+    <div class="form-section">
+      <div class="section-header">
+        <div class="section-num">05</div>
+        <div>
+          <div class="section-title">Design Preferences</div>
+          <div class="section-desc">Help us understand the look and feel you want.</div>
+        </div>
+      </div>
+      <div class="field-group">
+        <div class="field">
+          <label class="field-label">Overall feel <span class="req">*</span></label>
+          <div class="radio-group" style="margin-top:8px;">
+            <label class="radio-item">
+              <input type="radio" name="feel" value="warm" />
+              <div class="radio-item-text">
+                <div class="radio-item-label">Warm & welcoming</div>
+                <div class="radio-item-desc">Cream tones, gold accents, inviting and family-friendly</div>
+              </div>
+            </label>
+            <label class="radio-item">
+              <input type="radio" name="feel" value="bold" />
+              <div class="radio-item-text">
+                <div class="radio-item-label">Bold & modern</div>
+                <div class="radio-item-desc">Strong typography, high contrast, contemporary and energetic</div>
+              </div>
+            </label>
+            <label class="radio-item">
+              <input type="radio" name="feel" value="clean" />
+              <div class="radio-item-text">
+                <div class="radio-item-label">Clean & minimal</div>
+                <div class="radio-item-desc">White space, simple layout, professional and calm</div>
+              </div>
+            </label>
+            <label class="radio-item">
+              <input type="radio" name="feel" value="traditional" />
+              <div class="radio-item-text">
+                <div class="radio-item-label">Royal & traditional</div>
+                <div class="radio-item-desc">Deep colours, classic typography, reverent and established</div>
+              </div>
+            </label>
+          </div>
+        </div>
+        <div class="field">
+          <label class="field-label">Preferred colours</label>
+          <p class="field-hint">Do you have church brand colours? Share hex codes, colour names, or describe them.</p>
+          <input type="text" placeholder="e.g. Navy blue + gold, or #1A2B5F and #C9A84C" />
+        </div>
+        <div class="field">
+          <label class="field-label">Church logo</label>
+          <div class="radio-group" style="margin-top:8px;">
+            <label class="radio-item">
+              <input type="radio" name="logo" value="yes" />
+              <div class="radio-item-text">
+                <div class="radio-item-label">Yes, we have a logo</div>
+                <div class="radio-item-desc">Please email it to kelbiestudio@gmail.com as a PNG or SVG file</div>
+              </div>
+            </label>
+            <label class="radio-item">
+              <input type="radio" name="logo" value="no" />
+              <div class="radio-item-text">
+                <div class="radio-item-label">No, we don't have one</div>
+                <div class="radio-item-desc">We can design a simple text-based logo or church name treatment</div>
+              </div>
+            </label>
+          </div>
+        </div>
+        <div class="field">
+          <label class="field-label">Websites you like the look of</label>
+          <p class="field-hint">Share 1–3 links to church or other websites whose design you admire.</p>
+          <textarea placeholder="e.g. https://hillsong.com&#10;https://elevation.church&#10;Tell us what you like about them too" style="min-height:90px;"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- 06. CONTENT & MEDIA -->
+    <div class="form-section">
+      <div class="section-header">
+        <div class="section-num">06</div>
+        <div>
+          <div class="section-title">Content & Media</div>
+          <div class="section-desc">We need content from you to build the site. Let us know what you have ready.</div>
+        </div>
+      </div>
+      <div class="field-group">
+        <div class="field">
+          <label class="field-label">What content do you currently have ready?</label>
+          <div class="check-row" style="margin-top:8px;">
+            <label class="check-item"><input type="checkbox" /> <span class="check-item-label">Church photos</span></label>
+            <label class="check-item"><input type="checkbox" /> <span class="check-item-label">Sermon recordings</span></label>
+            <label class="check-item"><input type="checkbox" /> <span class="check-item-label">Pastor / team photos</span></label>
+            <label class="check-item"><input type="checkbox" /> <span class="check-item-label">Event photos</span></label>
+            <label class="check-item"><input type="checkbox" /> <span class="check-item-label">Written about / mission text</span></label>
+            <label class="check-item"><input type="checkbox" /> <span class="check-item-label">YouTube channel with videos</span></label>
+          </div>
+        </div>
+        <div class="field">
+          <label class="field-label">Languages the website should support</label>
+          <div class="check-row" style="margin-top:8px;">
+            <label class="check-item"><input type="checkbox" checked /> <span class="check-item-label">English</span></label>
+            <label class="check-item"><input type="checkbox" /> <span class="check-item-label">Bahasa Malaysia</span></label>
+            <label class="check-item"><input type="checkbox" /> <span class="check-item-label">Mandarin / Chinese</span></label>
+            <label class="check-item"><input type="checkbox" /> <span class="check-item-label">Tamil</span></label>
+          </div>
+        </div>
+        <div class="field">
+          <label class="field-label">Pastor / Leadership team</label>
+          <p class="field-hint">List the names and titles of your senior pastor and leadership team to be featured on the site.</p>
+          <textarea placeholder="e.g. Senior Pastor: Pastor David Lim&#10;Associate Pastor: Pastor Sarah Wong&#10;Youth Pastor: Bro. Marcus Tan"></textarea>
+        </div>
+        <div class="field">
+          <label class="field-label">YouTube channel link (for sermon embed)</label>
+          <input type="url" placeholder="e.g. https://www.youtube.com/@gracechurchkl" />
+        </div>
+      </div>
+    </div>
+
+    <!-- 07. TIMELINE & BUDGET -->
+    <div class="form-section">
+      <div class="section-header">
+        <div class="section-num">07</div>
+        <div>
+          <div class="section-title">Timeline & Budget</div>
+          <div class="section-desc">Help us plan the project properly so we can deliver on time.</div>
+        </div>
+      </div>
+      <div class="field-group">
+        <div class="field">
+          <label class="field-label">When do you need the website live? <span class="req">*</span></label>
+          <div class="radio-group" style="margin-top:8px;">
+            <label class="radio-item">
+              <input type="radio" name="timeline" value="asap" />
+              <div class="radio-item-text">
+                <div class="radio-item-label">As soon as possible</div>
+                <div class="radio-item-desc">Urgent — we need it within 2 weeks</div>
+              </div>
+            </label>
+            <label class="radio-item">
+              <input type="radio" name="timeline" value="month" />
+              <div class="radio-item-text">
+                <div class="radio-item-label">Within a month</div>
+                <div class="radio-item-desc">We have some flexibility — 2–4 weeks is fine</div>
+              </div>
+            </label>
+            <label class="radio-item">
+              <input type="radio" name="timeline" value="flexible" />
+              <div class="radio-item-text">
+                <div class="radio-item-label">Flexible</div>
+                <div class="radio-item-desc">We just want it done right — take the time needed</div>
+              </div>
+            </label>
+          </div>
+        </div>
+        <div class="field">
+          <label class="field-label">Budget range (USD)</label>
+          <select>
+            <option value="" disabled selected>Select a range</option>
+            
+            <option>$500 – $1,000</option>
+            <option>$1,000 – $2,500</option>
+            <option>$2,500 – $5,000</option>
+            <option>$5,000 – $10,000</option>
+            <option>Above $10,000</option>
+            <option>Not sure yet — let's discuss</option>
+          </select>
+        </div>
+        <div class="field">
+          <label class="field-label">Ongoing maintenance after launch?</label>
+          <div class="radio-group" style="margin-top:8px;">
+            <label class="radio-item">
+              <input type="radio" name="maintenance" value="yes" />
+              <div class="radio-item-text">
+                <div class="radio-item-label">Yes — monthly updates & support</div>
+                <div class="radio-item-desc">We'd like Kelbie Studio to manage the site after launch</div>
+              </div>
+            </label>
+            <label class="radio-item">
+              <input type="radio" name="maintenance" value="no" />
+              <div class="radio-item-text">
+                <div class="radio-item-label">No — we'll manage it ourselves</div>
+                <div class="radio-item-desc">Hand over the files and we'll take it from there</div>
+              </div>
+            </label>
+            <label class="radio-item">
+              <input type="radio" name="maintenance" value="maybe" />
+              <div class="radio-item-text">
+                <div class="radio-item-label">Not sure yet</div>
+                <div class="radio-item-desc">We can discuss this after the build</div>
+              </div>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 08. ANYTHING ELSE -->
+    <div class="form-section">
+      <div class="section-header">
+        <div class="section-num">08</div>
+        <div>
+          <div class="section-title">Anything Else</div>
+          <div class="section-desc">Anything else you'd like us to know before we get started.</div>
+        </div>
+      </div>
+      <div class="field-group">
+        <div class="field">
+          <label class="field-label">Additional notes, special requests, or questions</label>
+          <p class="field-hint">Anything else that will help us build the right website for your church community.</p>
+          <textarea style="min-height:130px;" placeholder="e.g. We run a children's ministry called KidsZone and would love a dedicated section. We also live stream every Sunday at 10:30am on YouTube..."></textarea>
+        </div>
+        <div class="field">
+          <label class="field-label">How did you hear about Kelbie Studio?</label>
+          <select>
+            <option value="" disabled selected>Select an option</option>
+            <option>Referred by a friend or family member</option>
+            <option>Saw our portfolio online</option>
+            <option>Instagram</option>
+            <option>WhatsApp / Direct message</option>
+            <option>Google search</option>
+            <option>Other</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+  </form>
+
+  <!-- FOOTER / SUBMIT -->
+  <div class="form-footer">
+    <div class="submit-box">
+      <div class="submit-text">
+        <h3>Ready to submit your brief?</h3>
+        <p>Once we receive this, Solomon will review it and get back to you within 24 hours with next steps and a custom proposal for your church.</p>
+      </div>
+      <button class="btn-submit" onclick="handleSubmit(event)">
+        Submit brief →
+      </button>
+    </div>
+    <div class="success-msg" id="successMsg">
+      <p>✓ Thank you — your brief has been submitted. Solomon will be in touch within 24 hours. You can also reach us directly on WhatsApp: +234 814 319 3047</p>
+    </div>
+  </div>
+
+  <!-- PROGRESS BAR -->
+  <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+
+  <script>
+    let uploadedFiles = [];
+
+    function handleFiles(files) {
+      const preview = document.getElementById('uploadPreview');
+      const maxFiles = 10;
+
+      Array.from(files).forEach(file => {
+        if (uploadedFiles.length >= maxFiles) {
+          alert('Maximum 10 images allowed.'); return;
+        }
+        if (file.size > 5 * 1024 * 1024) {
+          alert(file.name + ' is too large. Max size is 5MB per image.'); return;
+        }
+
+        uploadedFiles.push(file);
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          const item = document.createElement('div');
+          item.className = 'preview-item';
+          item.innerHTML = `
+            <img src="${e.target.result}" alt="${file.name}" />
+            <div class="preview-name">${file.name}</div>
+            <div class="preview-remove" onclick="removeFile(this, '${file.name}')">✕</div>
+          `;
+          preview.appendChild(item);
+          updateCount();
+        };
+        reader.readAsDataURL(file);
+      });
+    }
+
+    function removeFile(el, name) {
+      uploadedFiles = uploadedFiles.filter(f => f.name !== name);
+      el.parentElement.remove();
+      updateCount();
+    }
+
+    function updateCount() {
+      const box = document.getElementById('uploadBox');
+      let counter = box.querySelector('.upload-count');
+      if (uploadedFiles.length > 0) {
+        if (!counter) {
+          counter = document.createElement('div');
+          counter.className = 'upload-count';
+          box.appendChild(counter);
+        }
+        counter.textContent = uploadedFiles.length + ' image' + (uploadedFiles.length > 1 ? 's' : ') + ' selected';
+      } else if (counter) {
+        counter.remove();
+      }
+    }
+
+    // Drag and drop support
+    const uploadBox = document.getElementById('uploadBox');
+    uploadBox.addEventListener('dragover', e => { e.preventDefault(); uploadBox.style.borderColor = 'var(--gold)'; });
+    uploadBox.addEventListener('dragleave', () => { uploadBox.style.borderColor = ''  ; });
+    uploadBox.addEventListener('drop', e => {
+      e.preventDefault();
+      uploadBox.style.borderColor = '';
+      handleFiles(e.dataTransfer.files);
+    });
+
+    // Scroll progress bar
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = (scrollTop / docHeight) * 100;
+      document.getElementById('progressFill').style.width = progress + '%';
+    });
+
+    // Submit handler
+    function handleSubmit(e) {
+      e.preventDefault();
+      const form = document.getElementById('churchForm');
+      const required = form.querySelectorAll('[required]');
+      let valid = true;
+
+      required.forEach(field => {
+        if (!field.value.trim()) {
+          field.style.borderColor = 'rgba(220,60,60,0.6)';
+          valid = false;
+        } else {
+          field.style.borderColor = '';
+        }
+      });
+
+      if (!valid) {
+        alert('Please fill in all required fields marked with *');
+        return;
+      }
+
+      // Show success message
+      document.getElementById('successMsg').style.display = 'block';
+      document.getElementById('successMsg').scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+      // In production: submit to Formspree / EmailJS / backend here
+    }
+  </script>
+</body>
+</html>
